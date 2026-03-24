@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary teal #1F7F9A */
+    --primary: 0.55 0.12 210;
+    /* Dark teal #0B4F63 */
+    --primary-dark: 0.37 0.1 215;
+    /* Accent teal lighter */
+    --primary-light: 0.7 0.1 205;
+    /* Emergency red #D84A3A */
+    --destructive: 0.52 0.18 25;
+    /* Background #F3F7FA */
+    --background: 0.97 0.01 220;
+    /* White */
+    --card: 1 0 0;
+    /* Headings #111111 */
+    --foreground: 0.15 0 0;
+    /* Body gray #5F6B73 */
+    --muted-foreground: 0.52 0.02 220;
+    /* Borders #E6EDF2 */
+    --border: 0.93 0.02 220;
+    --input: 0.93 0.02 220;
+    --ring: 0.55 0.12 210;
+    --radius: 0.75rem;
+    --muted: 0.95 0.01 220;
+    --accent: 0.93 0.05 210;
+    --accent-foreground: 0.37 0.1 215;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0 0;
+    --secondary: 0.93 0.02 220;
+    --secondary-foreground: 0.37 0.1 215;
+    --card-foreground: 0.15 0 0;
+    --primary-foreground: 1 0 0;
+    --destructive-foreground: 1 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: "Plus Jakarta Sans", sans-serif;
+    @apply antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: oklch(var(--primary));
+  }
+  .text-primary-dark {
+    color: oklch(var(--primary-dark));
+  }
+  .text-emergency {
+    color: oklch(var(--destructive));
+  }
+  .bg-primary {
+    background-color: oklch(var(--primary));
+  }
+  .bg-primary-dark {
+    background-color: oklch(var(--primary-dark));
+  }
+  .bg-emergency {
+    background-color: oklch(var(--destructive));
+  }
+  .border-primary {
+    border-color: oklch(var(--primary));
+  }
+}
