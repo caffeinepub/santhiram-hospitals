@@ -34,7 +34,10 @@ const actions = [
 
 export function QuickActions() {
   return (
-    <section className="py-12 bg-white" data-ocid="quick_actions.section">
+    <section
+      className="py-12 bg-gradient-to-br from-teal-50 via-cyan-50 to-slate-50"
+      data-ocid="quick_actions.section"
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {actions.map((action, i) => (

@@ -126,7 +126,8 @@ export function Stats() {
       id="services"
       className="py-20 relative overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #0A4D8C 0%, #072F5A 100%)",
+        background:
+          "linear-gradient(135deg, #0a5568 0%, #134e4a 50%, #064e3b 100%)",
       }}
       data-ocid="stats.section"
     >

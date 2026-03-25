@@ -37,7 +37,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-hospital-bg"
+      className="py-20 bg-gradient-to-br from-slate-900 via-teal-900 to-slate-800"
       data-ocid="contact.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -47,10 +47,10 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+          <span className="text-amber-300 font-semibold text-sm tracking-widest uppercase">
             Get In Touch
           </span>
-          <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-white mt-2 mb-4">
             Contact Santhiram Hospital
           </h2>
         </motion.div>

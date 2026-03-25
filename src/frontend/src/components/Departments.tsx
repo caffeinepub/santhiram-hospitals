@@ -183,7 +183,7 @@ export function Departments({ onSelectDept }: DepartmentsProps) {
   return (
     <section
       id="departments"
-      className="py-20 bg-gradient-to-b from-white to-blue-50"
+      className="py-20 bg-gradient-to-b from-teal-50 via-white to-cyan-50"
       data-ocid="departments.section"
     >
       <div className="max-w-7xl mx-auto px-4">

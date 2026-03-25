@@ -55,7 +55,7 @@ export function Doctors() {
   return (
     <section
       id="doctors"
-      className="py-20 bg-white"
+      className="py-20 bg-gradient-to-br from-white via-slate-50 to-teal-50"
       data-ocid="doctors.section"
     >
       <div className="max-w-7xl mx-auto px-4">

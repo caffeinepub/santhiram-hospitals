@@ -15,7 +15,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-hospital-bg"
+      className="py-20 bg-gradient-to-br from-slate-50 via-teal-50 to-cyan-100"
       data-ocid="about.section"
     >
       <div className="max-w-7xl mx-auto px-4">

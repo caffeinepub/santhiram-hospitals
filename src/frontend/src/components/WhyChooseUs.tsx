@@ -26,7 +26,10 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 bg-hospital-bg" data-ocid="why_choose.section">
+    <section
+      className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50"
+      data-ocid="why_choose.section"
+    >
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-12"

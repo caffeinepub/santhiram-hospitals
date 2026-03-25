@@ -64,7 +64,10 @@ export function Testimonials() {
     );
 
   return (
-    <section className="py-20 bg-hospital-bg" data-ocid="testimonials.section">
+    <section
+      className="py-20 bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900"
+      data-ocid="testimonials.section"
+    >
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-12"
@@ -72,13 +75,13 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+          <span className="text-amber-300 font-semibold text-sm tracking-widest uppercase">
             Patient Stories
           </span>
-          <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-white mt-2 mb-4">
             What Our Patients Say
           </h2>
-          <p className="text-hospital-muted max-w-2xl mx-auto">
+          <p className="text-teal-100 max-w-2xl mx-auto">
             Thousands of patients trust Santhiram Hospital for their healthcare
             needs. Here are a few of their stories.
           </p>

@@ -128,7 +128,7 @@ export function AppointmentSection() {
   return (
     <section
       id="appointment"
-      className="py-20 bg-white"
+      className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50"
       data-ocid="appointment.section"
     >
       <div className="max-w-7xl mx-auto px-4">
