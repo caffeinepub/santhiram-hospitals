@@ -8,13 +8,15 @@ import {
 import { ChevronDown, Cross, Menu, Phone, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { NewsTickerStrip } from "./NewsTickerStrip";
 
 const departments = [
   "Cardiology",
   "Dermatology",
   "ENT",
+  "Gastroenterology",
   "General Surgery & Surgical Gastroenterology",
-  "Obstetrics & Gynaecology",
+  "Obstetrics & Gynecology",
   "Nephrology",
   "Neurology",
   "Oncology",
@@ -32,6 +34,7 @@ const departments = [
   "Pulmonology",
   "General Medicine",
   "Cardio Thoracic & Vascular Surgery",
+  "General Surgery",
 ];
 
 const navLinks = [
@@ -59,6 +62,12 @@ export function Header() {
     setTimeout(
       () => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }),
       50,
+    );
+  };
+
+  const handleDeptSelect = (dept: string) => {
+    window.dispatchEvent(
+      new CustomEvent("selectDept", { detail: { name: dept } }),
     );
   };
 
@@ -92,9 +101,14 @@ export function Header() {
         </div>
       </div>
 
+      {/* News Ticker Strip */}
+      <NewsTickerStrip />
+
       {/* Main Header */}
       <div
-        className={`bg-white transition-all duration-300 ${scrolled ? "shadow-header" : "border-b border-hospital-border"}`}
+        className={`bg-white transition-all duration-300 ${
+          scrolled ? "shadow-header" : "border-b border-hospital-border"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           {/* Logo */}
@@ -103,14 +117,19 @@ export function Header() {
             className="flex items-center gap-3"
             data-ocid="header.link"
           >
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{
+                background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+              }}
+            >
               <Cross className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="font-serif font-bold text-primary-dark text-lg leading-tight">
+              <div className="font-serif font-bold text-primary-dark text-lg leading-tight tracking-tight">
                 Santhiram
               </div>
-              <div className="text-xs text-hospital-muted font-medium tracking-wide">
+              <div className="text-xs text-hospital-muted font-medium tracking-widest uppercase">
                 Super Speciality Hospital
               </div>
             </div>
@@ -146,10 +165,13 @@ export function Header() {
                 data-ocid="nav.departments.dropdown_menu"
               >
                 {departments.map((dept) => (
-                  <DropdownMenuItem key={dept} asChild>
-                    <a href="#departments" className="cursor-pointer text-sm">
-                      {dept}
-                    </a>
+                  <DropdownMenuItem
+                    key={dept}
+                    className="cursor-pointer text-sm"
+                    onClick={() => handleDeptSelect(dept)}
+                    data-ocid="nav.departments.link"
+                  >
+                    {dept}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -166,7 +188,10 @@ export function Header() {
               +91 91210 22077
             </a>
             <Button
-              className="bg-primary hover:bg-primary-dark text-white rounded-full px-6"
+              className="text-white rounded-full px-6 font-semibold"
+              style={{
+                background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+              }}
               onClick={() =>
                 document
                   .getElementById("appointment")
@@ -215,7 +240,10 @@ export function Header() {
                   </button>
                 ))}
                 <Button
-                  className="bg-primary text-white rounded-full w-full mt-2"
+                  className="text-white rounded-full w-full mt-2 font-semibold"
+                  style={{
+                    background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+                  }}
                   onClick={() => handleMobileNav("#appointment")}
                   data-ocid="header.mobile_book.button"
                 >

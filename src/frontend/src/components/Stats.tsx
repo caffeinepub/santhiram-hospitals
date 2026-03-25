@@ -1,30 +1,81 @@
 import { useGetStats } from "@/hooks/useQueries";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
 const defaultStats = [
   {
     label: "Hospital Beds",
-    value: "500+",
+    value: 500,
+    suffix: "+",
     sub: "Advanced ICU & general wards",
   },
   {
     label: "Specialist Doctors",
-    value: "100+",
+    value: 100,
+    suffix: "+",
     sub: "Experienced across 22 fields",
   },
   {
     label: "Patients Treated",
-    value: "50,000+",
+    value: 50000,
+    suffix: "+",
     sub: "Successful outcomes annually",
   },
   {
     label: "Years of Service",
-    value: "15+",
+    value: 15,
+    suffix: "+",
     sub: "Trusted healthcare since 2009",
   },
-  { label: "CT Scan", value: "32-Slice", sub: "Latest diagnostic imaging" },
-  { label: "MRI Scanner", value: "1.5 Tesla", sub: "High-resolution imaging" },
+  {
+    label: "CT Scan",
+    value: 32,
+    suffix: "-Slice",
+    sub: "Latest diagnostic imaging",
+  },
+  {
+    label: "MRI Scanner",
+    value: 1,
+    suffix: ".5 Tesla",
+    sub: "High-resolution imaging",
+  },
 ];
+
+function AnimatedNumber({
+  target,
+  suffix,
+}: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 1800;
+    const step = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(interval);
+      } else {
+        setCount(start);
+      }
+    }, duration / 60);
+    return () => clearInterval(interval);
+  }, [isInView, target]);
+
+  return (
+    <div
+      ref={ref}
+      className="font-serif font-bold text-3xl sm:text-4xl text-white mb-1"
+    >
+      {count.toLocaleString()}
+      {suffix}
+    </div>
+  );
+}
 
 export function Stats() {
   const { data: statsData } = useGetStats();
@@ -33,32 +84,38 @@ export function Stats() {
     ? [
         {
           label: "Hospital Beds",
-          value: `${statsData.beds}+`,
+          value: Number(statsData.beds),
+          suffix: "+",
           sub: "Advanced ICU & general wards",
         },
         {
           label: "Specialist Doctors",
-          value: `${statsData.doctors}+`,
+          value: Number(statsData.doctors),
+          suffix: "+",
           sub: "Experienced across 22 fields",
         },
         {
           label: "Patients Treated",
-          value: `${statsData.patients}+`,
+          value: Number(statsData.patients),
+          suffix: "+",
           sub: "Successful outcomes annually",
         },
         {
           label: "Years of Service",
-          value: `${statsData.years}+`,
+          value: Number(statsData.years),
+          suffix: "+",
           sub: "Trusted healthcare since 2009",
         },
         {
           label: "CT Scan",
-          value: "32-Slice",
+          value: 32,
+          suffix: "-Slice",
           sub: "Latest diagnostic imaging",
         },
         {
           label: "MRI Scanner",
-          value: "1.5 Tesla",
+          value: 1,
+          suffix: ".5 Tesla",
           sub: "High-resolution imaging",
         },
       ]
@@ -67,10 +124,22 @@ export function Stats() {
   return (
     <section
       id="services"
-      className="py-20 bg-gradient-to-br from-primary-dark to-[oklch(0.28_0.08_215)]"
+      className="py-20 relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #0A4D8C 0%, #072F5A 100%)",
+      }}
       data-ocid="stats.section"
     >
-      <div className="max-w-7xl mx-auto px-4">
+      {/* Subtle pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -94,9 +163,7 @@ export function Stats() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="font-serif font-bold text-3xl sm:text-4xl text-white mb-1">
-                {stat.value}
-              </div>
+              <AnimatedNumber target={stat.value} suffix={stat.suffix} />
               <div className="text-primary-light font-semibold text-sm mb-1">
                 {stat.label}
               </div>

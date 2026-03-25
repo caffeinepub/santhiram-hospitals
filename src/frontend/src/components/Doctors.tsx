@@ -38,11 +38,11 @@ function getInitials(name: string) {
     .join("");
 }
 
-const avatarColors = [
-  "from-primary to-primary-dark",
-  "from-[oklch(0.52_0.15_280)] to-[oklch(0.40_0.15_280)]",
-  "from-[oklch(0.55_0.15_160)] to-[oklch(0.42_0.15_160)]",
-  "from-[oklch(0.52_0.18_25)] to-[oklch(0.40_0.18_25)]",
+const avatarGradients = [
+  "linear-gradient(135deg, #0A4D8C, #072F5A)",
+  "linear-gradient(135deg, #4DA8DA, #0A4D8C)",
+  "linear-gradient(135deg, #072F5A, #4DA8DA)",
+  "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
 ];
 
 export function Doctors() {
@@ -86,14 +86,18 @@ export function Doctors() {
               key={doc.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03, y: -4 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group"
+              className="bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden group border border-hospital-border"
               data-ocid={`doctors.item.${i + 1}`}
             >
               {/* Avatar */}
               <div
-                className={`h-48 bg-gradient-to-br ${avatarColors[i % avatarColors.length]} flex items-center justify-center relative overflow-hidden`}
+                className="h-48 flex items-center justify-center relative overflow-hidden"
+                style={{
+                  background: avatarGradients[i % avatarGradients.length],
+                }}
               >
                 <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center">
                   <span className="text-white font-serif font-bold text-3xl">
@@ -108,7 +112,7 @@ export function Doctors() {
               </div>
 
               <div className="p-5">
-                <h3 className="font-bold text-hospital-heading text-base mb-1">
+                <h3 className="font-bold text-hospital-heading text-base mb-1 tracking-tight">
                   {doc.name}
                 </h3>
                 <div className="flex items-center gap-1.5 text-primary text-sm font-medium mb-2">

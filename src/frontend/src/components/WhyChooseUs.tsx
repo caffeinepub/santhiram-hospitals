@@ -52,15 +52,21 @@ export function WhyChooseUs() {
               key={r.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03, y: -3 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 group"
+              className="bg-white rounded-2xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 group border border-hospital-border"
               data-ocid={`why_choose.item.${i + 1}`}
             >
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center text-white mb-5 transition-all duration-300"
+                style={{
+                  background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+                }}
+              >
                 {r.icon}
               </div>
-              <h3 className="font-bold text-hospital-heading text-lg mb-3">
+              <h3 className="font-bold text-hospital-heading text-lg mb-3 tracking-tight">
                 {r.title}
               </h3>
               <p className="text-hospital-muted text-sm leading-relaxed">

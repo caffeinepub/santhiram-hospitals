@@ -1,4 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +20,36 @@
 
 @layer base {
   :root {
-    /* Primary teal #1F7F9A */
-    --primary: 0.55 0.12 210;
-    /* Dark teal #0B4F63 */
-    --primary-dark: 0.37 0.1 215;
-    /* Accent teal lighter */
-    --primary-light: 0.7 0.1 205;
-    /* Emergency red #D84A3A */
-    --destructive: 0.52 0.18 25;
-    /* Background #F3F7FA */
-    --background: 0.97 0.01 220;
-    /* White */
+    /* Primary: Rich deep teal */
+    --primary: 0.38 0.13 195;
+    /* Primary Dark */
+    --primary-dark: 0.28 0.11 195;
+    /* Primary Light: Warm amber/gold */
+    --primary-light: 0.78 0.15 75;
+    /* Emergency: Vivid coral-red */
+    --destructive: 0.58 0.22 25;
+    /* Background: Soft warm off-white */
+    --background: 0.98 0.005 80;
+    /* Card: Pure white */
     --card: 1 0 0;
-    /* Headings #111111 */
-    --foreground: 0.15 0 0;
-    /* Body gray #5F6B73 */
-    --muted-foreground: 0.52 0.02 220;
-    /* Borders #E6EDF2 */
-    --border: 0.93 0.02 220;
-    --input: 0.93 0.02 220;
-    --ring: 0.55 0.12 210;
+    /* Foreground: Rich near-black with warmth */
+    --foreground: 0.18 0.02 270;
+    /* Muted text: Medium warm gray */
+    --muted-foreground: 0.52 0.02 200;
+    /* Border: Soft cool gray */
+    --border: 0.91 0.008 200;
+    --input: 0.91 0.008 200;
+    --ring: 0.38 0.13 195;
     --radius: 0.75rem;
-    --muted: 0.95 0.01 220;
-    --accent: 0.93 0.05 210;
-    --accent-foreground: 0.37 0.1 215;
+    /* Muted: Very light teal tint */
+    --muted: 0.96 0.015 195;
+    --accent: 0.78 0.15 75;
+    --accent-foreground: 0.18 0.02 270;
     --popover: 1 0 0;
-    --popover-foreground: 0.15 0 0;
-    --secondary: 0.93 0.02 220;
-    --secondary-foreground: 0.37 0.1 215;
-    --card-foreground: 0.15 0 0;
+    --popover-foreground: 0.18 0.02 270;
+    --secondary: 0.96 0.015 195;
+    --secondary-foreground: 0.28 0.11 195;
+    --card-foreground: 0.18 0.02 270;
     --primary-foreground: 1 0 0;
     --destructive-foreground: 1 0 0;
   }
@@ -46,7 +61,7 @@
   body {
     background-color: oklch(var(--background));
     color: oklch(var(--foreground));
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
     @apply antialiased;
   }
 
@@ -77,4 +92,19 @@
   .border-primary {
     border-color: oklch(var(--primary));
   }
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-animate {
+  animation: ticker-scroll 40s linear infinite;
+  display: flex;
+  white-space: nowrap;
 }

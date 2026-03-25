@@ -95,15 +95,29 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen pt-28 pb-16 bg-gradient-to-br from-[oklch(0.97_0.02_210)] to-[oklch(0.95_0.03_215)] relative overflow-hidden"
+      className="min-h-screen pt-36 pb-16 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, #F2F4F7 0%, #e8f0f8 60%, #dceaf5 100%)",
+      }}
     >
       {/* Decorative bg */}
       <div
         className="absolute inset-0 overflow-hidden pointer-events-none"
         aria-hidden="true"
       >
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/5" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-primary/5" />
+        <div
+          className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
+          style={{
+            background: "radial-gradient(circle, #4DA8DA, transparent)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-72 h-72 rounded-full opacity-10"
+          style={{
+            background: "radial-gradient(circle, #0A4D8C, transparent)",
+          }}
+        />
         <svg
           className="absolute bottom-0 left-0 w-full opacity-5"
           viewBox="0 0 1440 200"
@@ -114,7 +128,7 @@ export function Hero() {
           <title>Decorative wave</title>
           <path
             d="M0 100 C360 0 720 200 1080 100 C1260 50 1380 150 1440 100 V200 H0Z"
-            fill="oklch(0.55 0.12 210)"
+            fill="#0A4D8C"
           />
         </svg>
       </div>
@@ -132,7 +146,15 @@ export function Hero() {
               Nandyal's Premier Super Speciality Hospital
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl xl:text-6xl font-bold text-hospital-heading leading-tight mb-4">
-              Advanced Care, <span className="text-primary">Compassionate</span>{" "}
+              Advanced Care,{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: "linear-gradient(90deg, #0A4D8C, #4DA8DA)",
+                }}
+              >
+                Compassionate
+              </span>{" "}
               Healing
             </h1>
             <p className="text-hospital-muted text-lg leading-relaxed mb-8">
@@ -141,8 +163,13 @@ export function Hero() {
               beds, and a commitment to your complete well-being.
             </p>
             {/* Booking Form Card */}
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 shadow-card-hover">
-              <h3 className="text-white font-semibold text-lg mb-4">
+            <div
+              className="rounded-2xl p-6 shadow-card-hover"
+              style={{
+                background: "linear-gradient(135deg, #0A4D8C 0%, #072F5A 100%)",
+              }}
+            >
+              <h3 className="text-white font-semibold text-lg mb-4 tracking-tight">
                 Book an Appointment
               </h3>
               <form onSubmit={handleSubmit} className="space-y-3">
@@ -261,7 +288,13 @@ export function Hero() {
             className="hidden lg:flex items-center justify-center"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-primary/30 rounded-3xl" />
+              <div
+                className="absolute inset-0 rounded-3xl"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(77,168,218,0.1) 0%, rgba(10,77,140,0.3) 100%)",
+                }}
+              />
               <img
                 src="/assets/generated/hospital-hero-doctor.dim_600x700.png"
                 alt="Expert Medical Team at Santhiram Hospital"
@@ -274,7 +307,12 @@ export function Hero() {
                 transition={{ delay: 0.8 }}
                 className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-card p-4 flex items-center gap-3 z-20"
               >
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, #e8f0f8, #dceaf5)",
+                  }}
+                >
                   <CheckCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -290,7 +328,10 @@ export function Hero() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0 }}
-                className="absolute -top-5 -right-5 bg-emergency rounded-2xl shadow-card p-4 z-20 text-white text-center"
+                className="absolute -top-5 -right-5 rounded-2xl shadow-card p-4 z-20 text-white text-center"
+                style={{
+                  background: "linear-gradient(135deg, #D84A3A, #b03020)",
+                }}
               >
                 <div className="font-bold text-xl">24/7</div>
                 <div className="text-xs">Emergency</div>
@@ -306,12 +347,22 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          {heroStats.map((stat) => (
-            <div
+          {heroStats.map((stat, i) => (
+            <motion.div
               key={stat.label}
-              className="bg-white rounded-2xl p-5 shadow-card text-center flex flex-col items-center gap-2"
+              whileHover={{ scale: 1.04, y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="bg-white rounded-2xl p-5 shadow-card text-center flex flex-col items-center gap-2 border border-hospital-border"
             >
-              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-primary"
+                style={{
+                  background:
+                    i % 2 === 0
+                      ? "linear-gradient(135deg, #e8f0f8, #dceaf5)"
+                      : "linear-gradient(135deg, #dceaf5, #e8f0f8)",
+                }}
+              >
                 {stat.icon}
               </div>
               <div className="font-serif font-bold text-2xl text-primary-dark">
@@ -320,7 +371,7 @@ export function Hero() {
               <div className="text-xs text-hospital-muted font-medium">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
