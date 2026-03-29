@@ -39,10 +39,10 @@ function getInitials(name: string) {
 }
 
 const avatarGradients = [
-  "linear-gradient(135deg, #0A4D8C, #072F5A)",
-  "linear-gradient(135deg, #4DA8DA, #0A4D8C)",
-  "linear-gradient(135deg, #072F5A, #4DA8DA)",
-  "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+  "linear-gradient(135deg, #0B2E59, #0E7490)",
+  "linear-gradient(135deg, #0E7490, #0B2E59)",
+  "linear-gradient(135deg, #0A3D6B, #0E7490)",
+  "linear-gradient(135deg, #0B2E59, #1a5276)",
 ];
 
 export function Doctors() {
@@ -55,7 +55,7 @@ export function Doctors() {
   return (
     <section
       id="doctors"
-      className="py-20 bg-gradient-to-br from-white via-slate-50 to-teal-50"
+      className="py-20 bg-white"
       data-ocid="doctors.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -65,10 +65,10 @@ export function Doctors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+          <span className="text-teal font-semibold text-sm tracking-widest uppercase">
             Medical Team
           </span>
-          <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-navy mt-2 mb-4">
             Meet Our Expert Doctors
           </h2>
           <p className="text-hospital-muted max-w-2xl mx-auto">
@@ -112,10 +112,10 @@ export function Doctors() {
               </div>
 
               <div className="p-5">
-                <h3 className="font-bold text-hospital-heading text-base mb-1 tracking-tight">
+                <h3 className="font-bold text-navy text-base mb-1 tracking-tight">
                   {doc.name}
                 </h3>
-                <div className="flex items-center gap-1.5 text-primary text-sm font-medium mb-2">
+                <div className="flex items-center gap-1.5 text-teal text-sm font-medium mb-2">
                   <Stethoscope className="w-4 h-4" />
                   {doc.specialty}
                 </div>
@@ -126,7 +126,7 @@ export function Doctors() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full border-primary text-primary hover:bg-primary hover:text-white rounded-full"
+                  className="w-full border-navy text-navy hover:bg-navy hover:text-white rounded-full"
                   onClick={() =>
                     document
                       .getElementById("appointment")
@@ -144,7 +144,7 @@ export function Doctors() {
         <div className="text-center mt-10">
           <Button
             variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-white rounded-full px-8"
+            className="border-navy text-navy hover:bg-navy hover:text-white rounded-full px-8"
             data-ocid="doctors.view_all.button"
           >
             View All Doctors

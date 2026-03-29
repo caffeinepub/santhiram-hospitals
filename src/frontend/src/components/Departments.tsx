@@ -183,7 +183,7 @@ export function Departments({ onSelectDept }: DepartmentsProps) {
   return (
     <section
       id="departments"
-      className="py-20 bg-gradient-to-b from-teal-50 via-white to-cyan-50"
+      className="py-20 bg-white"
       data-ocid="departments.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -239,7 +239,7 @@ export function Departments({ onSelectDept }: DepartmentsProps) {
                     className="bg-white rounded-2xl border border-hospital-border shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden group"
                   >
                     {/* Image */}
-                    <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 to-sky-100 h-44 p-4">
+                    <div className="flex items-center justify-center bg-hospital-bg h-44 p-4">
                       <img
                         src={dept.image}
                         alt={dept.name}

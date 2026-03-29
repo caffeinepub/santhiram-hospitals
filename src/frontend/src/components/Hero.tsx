@@ -9,17 +9,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useBookAppointment } from "@/hooks/useQueries";
+import { useLanguage } from "@/i18n/LanguageContext";
 import {
   Activity,
   CheckCircle,
   Clock,
   Loader2,
+  Shield,
   Stethoscope,
   Users,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { depts } from "./Departments";
 
 const departments = [
   "Cardiology",
@@ -40,25 +43,6 @@ const departments = [
   "General Medicine",
 ];
 
-const heroStats = [
-  { icon: <Activity className="w-5 h-5" />, value: "500+", label: "Beds" },
-  {
-    icon: <Stethoscope className="w-5 h-5" />,
-    value: "100+",
-    label: "Specialists",
-  },
-  {
-    icon: <Users className="w-5 h-5" />,
-    value: "50,000+",
-    label: "Patients Served",
-  },
-  {
-    icon: <Clock className="w-5 h-5" />,
-    value: "24/7",
-    label: "Emergency Care",
-  },
-];
-
 export function Hero() {
   const [form, setForm] = useState({
     name: "",
@@ -68,6 +52,30 @@ export function Hero() {
     time: "",
   });
   const mutation = useBookAppointment();
+  const { t } = useLanguage();
+
+  const heroStats = [
+    {
+      icon: <Activity className="w-5 h-5" />,
+      value: "500+",
+      labelKey: "statBeds",
+    },
+    {
+      icon: <Stethoscope className="w-5 h-5" />,
+      value: "100+",
+      labelKey: "statSpecialists",
+    },
+    {
+      icon: <Users className="w-5 h-5" />,
+      value: "50,000+",
+      labelKey: "statPatients",
+    },
+    {
+      icon: <Clock className="w-5 h-5" />,
+      value: "24/7",
+      labelKey: "statEmergency",
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,91 +100,227 @@ export function Hero() {
     }
   };
 
+  // Duplicate for seamless infinite scroll
+  const scrollDepts = [...depts, ...depts];
+
+  const scrollToSpecialties = () => {
+    document
+      .getElementById("specialties")
+      ?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="home"
-      className="min-h-screen pt-36 pb-16 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, #F2F4F7 0%, #e8f0f8 60%, #dceaf5 100%)",
-      }}
+      className="relative min-h-screen flex flex-col overflow-hidden"
+      style={{ background: "#0B2E59" }}
     >
-      {/* Decorative bg */}
-      <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        aria-hidden="true"
-      >
-        <div
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
-          style={{
-            background: "radial-gradient(circle, #4DA8DA, transparent)",
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-72 h-72 rounded-full opacity-10"
-          style={{
-            background: "radial-gradient(circle, #0A4D8C, transparent)",
-          }}
-        />
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 hero-dot-grid opacity-[0.07]" />
+
+      {/* Decorative medical cross — top left */}
+      <div className="absolute top-32 left-8 text-white/10 pointer-events-none select-none hidden lg:block">
         <svg
-          className="absolute bottom-0 left-0 w-full opacity-5"
-          viewBox="0 0 1440 200"
-          fill="none"
+          width="72"
+          height="72"
+          viewBox="0 0 72 72"
+          fill="currentColor"
           aria-hidden="true"
           role="presentation"
         >
-          <title>Decorative wave</title>
-          <path
-            d="M0 100 C360 0 720 200 1080 100 C1260 50 1380 150 1440 100 V200 H0Z"
-            fill="#0A4D8C"
-          />
+          <rect x="28" y="0" width="16" height="72" rx="4" />
+          <rect x="0" y="28" width="72" height="16" rx="4" />
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-semibold text-sm px-4 py-1.5 rounded-full mb-5">
-              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              Nandyal's Premier Super Speciality Hospital
-            </div>
-            <h1 className="font-serif text-4xl sm:text-5xl xl:text-6xl font-bold text-hospital-heading leading-tight mb-4">
-              Advanced Care,{" "}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: "linear-gradient(90deg, #0A4D8C, #4DA8DA)",
-                }}
+      {/* Decorative rings — bottom right */}
+      <div className="absolute bottom-44 right-8 pointer-events-none select-none hidden lg:block">
+        <div className="hero-pulse-ring" style={{ width: 120, height: 120 }} />
+        <div
+          className="hero-pulse-ring"
+          style={{ width: 80, height: 80, top: 20, left: 20 }}
+        />
+      </div>
+
+      {/* Decorative small cross — right side */}
+      <div className="absolute top-1/2 right-[48%] -translate-y-1/2 text-white/5 pointer-events-none select-none hidden lg:block">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="currentColor"
+          aria-hidden="true"
+          role="presentation"
+        >
+          <rect x="16" y="0" width="8" height="40" rx="2" />
+          <rect x="0" y="16" width="40" height="8" rx="2" />
+        </svg>
+      </div>
+
+      {/* Department scroll strip — absolutely positioned at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-44 z-[1] pointer-events-none overflow-hidden">
+        {/* Top gradient fade — blends strip into navy above */}
+        <div
+          className="absolute top-0 left-0 right-0 h-16 z-10"
+          style={{
+            background:
+              "linear-gradient(to bottom, #0B2E59 0%, transparent 100%)",
+          }}
+        />
+        {/* Left & right gradient fades */}
+        <div
+          className="absolute top-0 left-0 bottom-0 w-24 z-10"
+          style={{
+            background:
+              "linear-gradient(to right, #0B2E59 0%, transparent 100%)",
+          }}
+        />
+        <div
+          className="absolute top-0 right-0 bottom-0 w-24 z-10"
+          style={{
+            background:
+              "linear-gradient(to left, #0B2E59 0%, transparent 100%)",
+          }}
+        />
+        {/* Scrolling strip */}
+        <div className="absolute inset-0 flex items-center pointer-events-auto">
+          <div className="dept-strip-animate flex items-center gap-4 px-4">
+            {scrollDepts.map((dept, i) => (
+              <button
+                type="button"
+                // biome-ignore lint/suspicious/noArrayIndexKey: static duplicate list
+                key={`dept-strip-${i}`}
+                className="flex flex-col items-center gap-1.5 flex-shrink-0 cursor-pointer hover:scale-105 transition-transform bg-transparent border-0 p-0"
+                onClick={scrollToSpecialties}
+                data-ocid="hero.specialties.link"
               >
-                Compassionate
-              </span>{" "}
-              Healing
-            </h1>
-            <p className="text-hospital-muted text-lg leading-relaxed mb-8">
-              Santhiram Super Speciality Hospital — Nandyal's most trusted
-              healthcare destination. 22 departments, 100+ specialists, 500+
-              beds, and a commitment to your complete well-being.
-            </p>
+                <div
+                  className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: "rgba(255,255,255,0.08)",
+                    border: "2px solid rgba(255,255,255,0.2)",
+                  }}
+                >
+                  <img
+                    src={dept.image}
+                    alt={dept.name}
+                    className="w-full h-full object-contain p-1"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="text-white/70 text-[10px] font-medium text-center leading-tight max-w-[80px] truncate">
+                  {dept.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-4 pt-36 pb-52">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
+          {/* Left Column */}
+          <div>
+            {/* Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-wrap items-center gap-3 mb-5"
+            >
+              <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold text-xs px-4 py-1.5 rounded-full">
+                <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
+                {t("badge1")}
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold text-xs px-3 py-1.5 rounded-full">
+                <Shield className="w-3.5 h-3.5 text-gold" />
+                {t("badge2")}
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold text-xs px-3 py-1.5 rounded-full">
+                <Clock className="w-3.5 h-3.5 text-gold" />
+                {t("badge3")}
+              </span>
+            </motion.div>
+
+            {/* Gold accent rule */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="origin-left mb-5"
+            >
+              <div
+                className="h-[3px] w-20 rounded-full"
+                style={{
+                  background:
+                    "linear-gradient(90deg, #C9A227, rgba(201,162,39,0.2))",
+                }}
+              />
+            </motion.div>
+
+            {/* Heading — single line */}
+            <motion.h1
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="font-serif text-2xl sm:text-3xl xl:text-[2.6rem] font-bold text-white leading-tight mb-4 whitespace-nowrap"
+            >
+              {t("heroHeading")}
+            </motion.h1>
+
+            {/* Subtext — single line */}
+            <motion.p
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-white/75 text-sm sm:text-base leading-relaxed mb-6 whitespace-nowrap overflow-hidden text-ellipsis"
+            >
+              {t("heroSubtext")}
+            </motion.p>
+
+            {/* Trust indicator mini-stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="flex flex-wrap gap-3 mb-8"
+            >
+              {heroStats.map((stat) => (
+                <div
+                  key={stat.labelKey}
+                  className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl px-3 py-2"
+                >
+                  <span className="text-gold">{stat.icon}</span>
+                  <span className="text-white font-bold text-sm">
+                    {stat.value}
+                  </span>
+                  <span className="text-white/60 text-xs">
+                    {t(stat.labelKey)}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+
             {/* Booking Form Card */}
-            <div
-              className="rounded-2xl p-6 shadow-card-hover"
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="rounded-2xl p-6 shadow-2xl"
               style={{
-                background: "linear-gradient(135deg, #0A4D8C 0%, #072F5A 100%)",
+                background: "#FFFFFF",
+                border: "1px solid rgba(201,162,39,0.35)",
               }}
             >
-              <h3 className="text-white font-semibold text-lg mb-4 tracking-tight">
-                Book an Appointment
+              <h3 className="font-semibold text-lg mb-4 tracking-tight text-navy">
+                {t("formTitle")}
               </h3>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div>
-                    <Label className="text-white/80 text-xs mb-1 block">
-                      Full Name *
+                    <Label className="text-xs mb-1 block font-medium text-navy">
+                      {t("fullName")} *
                     </Label>
                     <Input
                       placeholder="Your name"
@@ -184,13 +328,13 @@ export function Hero() {
                       onChange={(e) =>
                         setForm({ ...form, name: e.target.value })
                       }
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white"
+                      className="bg-white border-gray-300 text-navy placeholder:text-gray-400 focus:border-teal"
                       data-ocid="hero.appointment.name.input"
                     />
                   </div>
                   <div>
-                    <Label className="text-white/80 text-xs mb-1 block">
-                      Phone Number *
+                    <Label className="text-xs mb-1 block font-medium text-navy">
+                      {t("phoneNumber")} *
                     </Label>
                     <Input
                       placeholder="+91 XXXXX XXXXX"
@@ -198,21 +342,21 @@ export function Hero() {
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
                       }
-                      className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white"
+                      className="bg-white border-gray-300 text-navy placeholder:text-gray-400 focus:border-teal"
                       data-ocid="hero.appointment.phone.input"
                     />
                   </div>
                 </div>
                 <div>
-                  <Label className="text-white/80 text-xs mb-1 block">
-                    Department *
+                  <Label className="text-xs mb-1 block font-medium text-navy">
+                    {t("department")} *
                   </Label>
                   <Select
                     value={form.department}
                     onValueChange={(v) => setForm({ ...form, department: v })}
                   >
                     <SelectTrigger
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-white border-gray-300 text-navy"
                       data-ocid="hero.appointment.department.select"
                     >
                       <SelectValue placeholder="Select department" />
@@ -228,8 +372,8 @@ export function Hero() {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div>
-                    <Label className="text-white/80 text-xs mb-1 block">
-                      Preferred Date
+                    <Label className="text-xs mb-1 block font-medium text-navy">
+                      {t("preferredDate")}
                     </Label>
                     <Input
                       type="date"
@@ -237,13 +381,13 @@ export function Hero() {
                       onChange={(e) =>
                         setForm({ ...form, date: e.target.value })
                       }
-                      className="bg-white/10 border-white/20 text-white focus:border-white"
+                      className="bg-white border-gray-300 text-navy focus:border-teal"
                       data-ocid="hero.appointment.date.input"
                     />
                   </div>
                   <div>
-                    <Label className="text-white/80 text-xs mb-1 block">
-                      Preferred Time
+                    <Label className="text-xs mb-1 block font-medium text-navy">
+                      {t("preferredTime")}
                     </Label>
                     <Input
                       type="time"
@@ -251,7 +395,7 @@ export function Hero() {
                       onChange={(e) =>
                         setForm({ ...form, time: e.target.value })
                       }
-                      className="bg-white/10 border-white/20 text-white focus:border-white"
+                      className="bg-white border-gray-300 text-navy focus:border-teal"
                       data-ocid="hero.appointment.time.input"
                     />
                   </div>
@@ -259,122 +403,116 @@ export function Hero() {
                 <Button
                   type="submit"
                   disabled={mutation.isPending}
-                  className="w-full bg-white text-primary-dark hover:bg-white/90 font-bold rounded-full h-12 text-base"
+                  className="w-full font-bold rounded-full h-12 text-base text-white hover:opacity-90"
+                  style={{ background: "#0B2E59" }}
                   data-ocid="hero.appointment.submit_button"
                 >
                   {mutation.isPending ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />{" "}
-                      Booking...
+                      {t("booking")}
                     </>
                   ) : mutation.isSuccess ? (
                     <>
-                      <CheckCircle className="w-4 h-4 mr-2" /> Appointment
-                      Requested!
+                      <CheckCircle className="w-4 h-4 mr-2" />{" "}
+                      {t("appointmentRequested")}
                     </>
                   ) : (
-                    "Book Now — Free Consultation"
+                    t("bookNow")
                   )}
                 </Button>
               </form>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          {/* Right: Doctor Image */}
+          {/* Right Column — YouTube Video */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden lg:flex items-center justify-center"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="hidden lg:flex flex-col justify-end gap-3 h-full"
           >
-            <div className="relative">
-              <div
-                className="absolute inset-0 rounded-3xl"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(77,168,218,0.1) 0%, rgba(10,77,140,0.3) 100%)",
-                }}
-              />
-              <img
-                src="/assets/generated/hospital-hero-doctor.dim_600x700.png"
-                alt="Expert Medical Team at Santhiram Hospital"
-                className="relative z-10 rounded-3xl w-full max-w-md object-cover shadow-card-hover"
-                style={{ maxHeight: "520px" }}
-              />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-card p-4 flex items-center gap-3 z-20"
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: "linear-gradient(135deg, #e8f0f8, #dceaf5)",
-                  }}
-                >
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-hospital-heading">
-                    NABH Accredited
-                  </div>
-                  <div className="text-xs text-hospital-muted">
-                    Quality Healthcare
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 }}
-                className="absolute -top-5 -right-5 rounded-2xl shadow-card p-4 z-20 text-white text-center"
-                style={{
-                  background: "linear-gradient(135deg, #D84A3A, #b03020)",
-                }}
-              >
-                <div className="font-bold text-xl">24/7</div>
-                <div className="text-xs">Emergency</div>
-              </motion.div>
+            {/* Decorative label above video */}
+            <div className="flex items-center gap-2 mb-2">
+              <div className="h-px flex-1 bg-white/20" />
+              <span className="text-white/50 text-xs font-medium uppercase tracking-widest">
+                Santhiram Hospital
+              </span>
+              <div className="h-px flex-1 bg-white/20" />
             </div>
+            <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl hero-video-frame">
+              <iframe
+                src="https://www.youtube.com/embed/XaQU_ejvB1E?rel=0&modestbranding=1&autoplay=0"
+                title="Santhiram Hospital"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            {/* Floating info card below video */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3"
+            >
+              <div className="w-8 h-8 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-4 h-4 text-gold" />
+              </div>
+              <div>
+                <div className="text-white text-xs font-semibold">
+                  NABH Accredited
+                </div>
+                <div className="text-white/50 text-[11px]">
+                  National Accreditation Board for Hospitals
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
+      </div>
 
-        {/* Stats Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-        >
-          {heroStats.map((stat, i) => (
+      {/* Stats Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="relative z-10 w-full"
+        style={{
+          background: "rgba(10,38,71,0.95)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {heroStats.map((stat) => (
             <motion.div
-              key={stat.label}
+              key={stat.labelKey}
               whileHover={{ scale: 1.04, y: -2 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-white rounded-2xl p-5 shadow-card text-center flex flex-col items-center gap-2 border border-hospital-border"
+              className="flex items-center gap-3"
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-white"
                 style={{
-                  background:
-                    i % 2 === 0
-                      ? "linear-gradient(135deg, #e8f0f8, #dceaf5)"
-                      : "linear-gradient(135deg, #dceaf5, #e8f0f8)",
+                  background: "rgba(201,162,39,0.2)",
+                  border: "1px solid rgba(201,162,39,0.3)",
                 }}
               >
                 {stat.icon}
               </div>
-              <div className="font-serif font-bold text-2xl text-primary-dark">
-                {stat.value}
-              </div>
-              <div className="text-xs text-hospital-muted font-medium">
-                {stat.label}
+              <div>
+                <div className="font-serif font-bold text-xl text-white">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-gold/80 font-medium">
+                  {t(stat.labelKey)}
+                </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

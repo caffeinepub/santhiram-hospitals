@@ -13,11 +13,7 @@ const highlights = [
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="py-20 bg-gradient-to-br from-slate-50 via-teal-50 to-cyan-100"
-      data-ocid="about.section"
-    >
+    <section id="about" className="py-20 bg-white" data-ocid="about.section">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -26,7 +22,7 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+            <span className="text-gold font-semibold text-sm tracking-widest uppercase">
               Who We Are
             </span>
             <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-6 leading-tight">
@@ -50,7 +46,7 @@ export function About() {
               {highlights.map((h) => (
                 <div
                   key={h.text}
-                  className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-card"
+                  className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-card border border-hospital-border"
                 >
                   <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
                     {h.icon}
@@ -86,7 +82,7 @@ export function About() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-white rounded-2xl p-6 shadow-card text-center"
+                className="bg-white rounded-2xl p-6 shadow-card border border-hospital-border text-center"
               >
                 <div className="font-serif font-bold text-4xl text-primary mb-1">
                   {stat.value}

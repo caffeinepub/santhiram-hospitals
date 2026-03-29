@@ -26,10 +26,7 @@ const reasons = [
 
 export function WhyChooseUs() {
   return (
-    <section
-      className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50"
-      data-ocid="why_choose.section"
-    >
+    <section className="py-20 bg-hospital-bg" data-ocid="why_choose.section">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-12"
@@ -37,10 +34,10 @@ export function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+          <span className="text-teal font-semibold text-sm tracking-widest uppercase">
             Why Us
           </span>
-          <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-navy mt-2 mb-4">
             Why Choose Santhiram Hospital?
           </h2>
           <p className="text-hospital-muted max-w-2xl mx-auto">
@@ -64,12 +61,12 @@ export function WhyChooseUs() {
               <div
                 className="w-14 h-14 rounded-xl flex items-center justify-center text-white mb-5 transition-all duration-300"
                 style={{
-                  background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+                  background: "linear-gradient(135deg, #0E7490, #0B2E59)",
                 }}
               >
                 {r.icon}
               </div>
-              <h3 className="font-bold text-hospital-heading text-lg mb-3 tracking-tight">
+              <h3 className="font-bold text-navy text-lg mb-3 tracking-tight">
                 {r.title}
               </h3>
               <p className="text-hospital-muted text-sm leading-relaxed">

@@ -36,7 +36,9 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((s) => (
         <Star
           key={s}
-          className={`w-4 h-4 ${s <= rating ? "fill-amber-400 text-amber-400" : "text-gray-200"}`}
+          className={`w-4 h-4 ${
+            s <= rating ? "fill-gold text-gold" : "text-gray-200"
+          }`}
         />
       ))}
     </div>
@@ -65,7 +67,10 @@ export function Testimonials() {
 
   return (
     <section
-      className="py-20 bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900"
+      className="py-20"
+      style={{
+        background: "linear-gradient(135deg, #0B2E59 0%, #0E7490 100%)",
+      }}
       data-ocid="testimonials.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -75,13 +80,13 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-amber-300 font-semibold text-sm tracking-widest uppercase">
+          <span className="text-gold font-semibold text-sm tracking-widest uppercase">
             Patient Stories
           </span>
           <h2 className="font-serif text-4xl font-bold text-white mt-2 mb-4">
             What Our Patients Say
           </h2>
-          <p className="text-teal-100 max-w-2xl mx-auto">
+          <p className="text-white/70 max-w-2xl mx-auto">
             Thousands of patients trust Santhiram Hospital for their healthcare
             needs. Here are a few of their stories.
           </p>
@@ -98,18 +103,18 @@ export function Testimonials() {
                   className="bg-white rounded-2xl p-7 shadow-card"
                   data-ocid={`testimonials.item.${i + 1}`}
                 >
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                  <Quote className="w-8 h-8 text-navy/20 mb-4" />
                   <p className="text-hospital-muted text-sm leading-relaxed mb-5 italic">
                     "{t.message}"
                   </p>
                   <div className="flex items-center gap-3 pt-4 border-t border-hospital-border">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-primary font-bold text-sm">
+                    <div className="w-10 h-10 bg-navy/10 rounded-full flex items-center justify-center">
+                      <span className="text-navy font-bold text-sm">
                         {t.patientName[0]}
                       </span>
                     </div>
                     <div>
-                      <div className="font-semibold text-hospital-heading text-sm">
+                      <div className="font-semibold text-navy text-sm">
                         {t.patientName}
                       </div>
                       <StarRating rating={Number(t.rating)} />
@@ -124,7 +129,7 @@ export function Testimonials() {
             <button
               type="button"
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-hospital-border hover:bg-primary hover:border-primary hover:text-white flex items-center justify-center transition-all"
+              className="w-10 h-10 rounded-full border border-white/30 hover:bg-white/10 text-white flex items-center justify-center transition-all"
               data-ocid="testimonials.pagination_prev"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -135,14 +140,16 @@ export function Testimonials() {
                   type="button"
                   key={t.patientName}
                   onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${i === current ? "bg-primary w-6" : "bg-hospital-border"}`}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === current ? "bg-gold w-6" : "bg-white/30"
+                  }`}
                 />
               ))}
             </div>
             <button
               type="button"
               onClick={next}
-              className="w-10 h-10 rounded-full border border-hospital-border hover:bg-primary hover:border-primary hover:text-white flex items-center justify-center transition-all"
+              className="w-10 h-10 rounded-full border border-white/30 hover:bg-white/10 text-white flex items-center justify-center transition-all"
               data-ocid="testimonials.pagination_next"
             >
               <ChevronRight className="w-5 h-5" />

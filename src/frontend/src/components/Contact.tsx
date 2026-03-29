@@ -37,7 +37,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-slate-900 via-teal-900 to-slate-800"
+      className="py-20 bg-white"
       data-ocid="contact.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -47,12 +47,16 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-amber-300 font-semibold text-sm tracking-widest uppercase">
+          <span className="text-teal font-semibold text-sm tracking-widest uppercase">
             Get In Touch
           </span>
-          <h2 className="font-serif text-4xl font-bold text-white mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-navy mt-2 mb-4">
             Contact Santhiram Hospital
           </h2>
+          <p className="text-hospital-muted max-w-2xl mx-auto">
+            We're here to help. Reach out for appointments, queries, or
+            emergency assistance.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -63,8 +67,8 @@ export function Contact() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            {/* Map placeholder */}
-            <div className="bg-primary/10 rounded-2xl h-64 flex items-center justify-center border border-primary/20 overflow-hidden">
+            {/* Map */}
+            <div className="rounded-2xl h-64 overflow-hidden border border-hospital-border">
               <iframe
                 title="Santhiram Hospital Location"
                 src="https://maps.google.com/maps?q=Santhiram+Hospital+Nandyal+Andhra+Pradesh&output=embed"
@@ -74,22 +78,22 @@ export function Contact() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-white rounded-2xl p-5 shadow-card">
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-3">
+              <div className="bg-white rounded-2xl p-5 shadow-card border border-hospital-border">
+                <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-teal mb-3">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <h4 className="font-semibold text-hospital-heading text-sm mb-1">
+                <h4 className="font-semibold text-navy text-sm mb-1">
                   Address
                 </h4>
                 <p className="text-hospital-muted text-xs leading-relaxed">
                   NH40, Nandyala, Andhra Pradesh 518001
                 </p>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-card">
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-3">
+              <div className="bg-white rounded-2xl p-5 shadow-card border border-hospital-border">
+                <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-teal mb-3">
                   <Clock className="w-5 h-5" />
                 </div>
-                <h4 className="font-semibold text-hospital-heading text-sm mb-1">
+                <h4 className="font-semibold text-navy text-sm mb-1">
                   Working Hours
                 </h4>
                 <p className="text-hospital-muted text-xs leading-relaxed">
@@ -98,11 +102,11 @@ export function Contact() {
                   Emergency: 24/7
                 </p>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-card">
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-3">
+              <div className="bg-white rounded-2xl p-5 shadow-card border border-hospital-border">
+                <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-teal mb-3">
                   <Phone className="w-5 h-5" />
                 </div>
-                <h4 className="font-semibold text-hospital-heading text-sm mb-2">
+                <h4 className="font-semibold text-navy text-sm mb-2">
                   Phone Numbers
                 </h4>
                 <div className="space-y-1">
@@ -111,7 +115,7 @@ export function Contact() {
                       <a
                         key={ph}
                         href={`tel:${ph.replace(/\s/g, "")}`}
-                        className="block text-xs text-primary hover:underline"
+                        className="block text-xs text-teal hover:underline"
                       >
                         {ph}
                       </a>
@@ -119,16 +123,14 @@ export function Contact() {
                   )}
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-card">
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-3">
+              <div className="bg-white rounded-2xl p-5 shadow-card border border-hospital-border">
+                <div className="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center text-teal mb-3">
                   <Mail className="w-5 h-5" />
                 </div>
-                <h4 className="font-semibold text-hospital-heading text-sm mb-1">
-                  Email
-                </h4>
+                <h4 className="font-semibold text-navy text-sm mb-1">Email</h4>
                 <a
                   href="mailto:info@santhiramhospitals.com"
-                  className="text-xs text-primary hover:underline break-all"
+                  className="text-xs text-teal hover:underline break-all"
                 >
                   info@santhiramhospitals.com
                 </a>
@@ -144,27 +146,28 @@ export function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-white rounded-2xl p-8 shadow-card"
+              className="bg-white rounded-2xl p-8 shadow-card border border-hospital-border"
               data-ocid="contact.form"
             >
-              <h3 className="font-serif font-bold text-xl text-hospital-heading mb-6">
+              <h3 className="font-serif font-bold text-xl text-navy mb-6">
                 Send Us a Message
               </h3>
               <div className="space-y-4">
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Your Name *
                   </Label>
                   <Input
                     placeholder="Enter your name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="border-hospital-border focus:border-teal"
                     data-ocid="contact.name.input"
                   />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                    <Label className="text-sm font-medium text-navy mb-1.5 block">
                       Phone *
                     </Label>
                     <Input
@@ -173,11 +176,12 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
                       }
+                      className="border-hospital-border focus:border-teal"
                       data-ocid="contact.phone.input"
                     />
                   </div>
                   <div>
-                    <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                    <Label className="text-sm font-medium text-navy mb-1.5 block">
                       Email
                     </Label>
                     <Input
@@ -187,12 +191,13 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, email: e.target.value })
                       }
+                      className="border-hospital-border focus:border-teal"
                       data-ocid="contact.email.input"
                     />
                   </div>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Message *
                   </Label>
                   <Textarea
@@ -201,14 +206,15 @@ export function Contact() {
                     onChange={(e) =>
                       setForm({ ...form, message: e.target.value })
                     }
-                    className="min-h-[120px]"
+                    className="min-h-[120px] border-hospital-border focus:border-teal"
                     data-ocid="contact.message.textarea"
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={mutation.isPending}
-                  className="w-full bg-primary hover:bg-primary-dark text-white rounded-full h-11 font-semibold"
+                  className="w-full text-white rounded-full h-11 font-semibold"
+                  style={{ background: "#0B2E59" }}
                   data-ocid="contact.submit_button"
                 >
                   {mutation.isPending ? (
@@ -227,7 +233,7 @@ export function Contact() {
                 </Button>
                 {mutation.isSuccess && (
                   <p
-                    className="text-center text-sm text-primary"
+                    className="text-center text-sm text-teal"
                     data-ocid="contact.success_state"
                   >
                     ✓ We'll get back to you within 24 hours.

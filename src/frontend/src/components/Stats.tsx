@@ -126,12 +126,11 @@ export function Stats() {
       id="services"
       className="py-20 relative overflow-hidden"
       style={{
-        background:
-          "linear-gradient(135deg, #0a5568 0%, #134e4a 50%, #064e3b 100%)",
+        background: "linear-gradient(135deg, #0B2E59 0%, #0A3D6B 100%)",
       }}
       data-ocid="stats.section"
     >
-      {/* Subtle pattern overlay */}
+      {/* Subtle dot pattern */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
@@ -147,7 +146,7 @@ export function Stats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary-light font-semibold text-sm tracking-widest uppercase">
+          <span className="text-gold font-semibold text-sm tracking-widest uppercase">
             Our Impact
           </span>
           <h2 className="font-serif text-4xl font-bold text-white mt-2 mb-4">
@@ -165,7 +164,7 @@ export function Stats() {
               className="text-center"
             >
               <AnimatedNumber target={stat.value} suffix={stat.suffix} />
-              <div className="text-primary-light font-semibold text-sm mb-1">
+              <div className="text-gold font-semibold text-sm mb-1">
                 {stat.label}
               </div>
               <div className="text-white/60 text-xs">{stat.sub}</div>

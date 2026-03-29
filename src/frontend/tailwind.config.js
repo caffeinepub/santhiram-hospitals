@@ -1,72 +1,76 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        serif: ["'Playfair Display'", "Georgia", "serif"],
-        sans: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
-      },
       colors: {
-        primary: {
-          DEFAULT: "oklch(0.38 0.13 195)",
-          dark: "oklch(0.28 0.11 195)",
-          light: "oklch(0.78 0.15 75)",
-          foreground: "oklch(1 0 0)",
-        },
-        emergency: {
-          DEFAULT: "oklch(0.58 0.22 25)",
-          foreground: "oklch(1 0 0)",
-        },
         hospital: {
-          bg: "oklch(0.96 0.015 195)",
-          border: "oklch(0.91 0.008 200)",
-          muted: "oklch(0.52 0.02 200)",
-          heading: "oklch(0.18 0.02 270)",
+          heading: "#0B2E59",
+          body: "#334155",
+          muted: "#64748B",
+          bg: "#F8FAFC",
+          border: "#E2E8F0",
+          gold: "#C9A227",
+          teal: "#0E7490",
         },
-        border: "oklch(0.91 0.008 200)",
-        input: "oklch(0.91 0.008 200)",
-        ring: "oklch(0.38 0.13 195)",
-        background: "oklch(0.98 0.005 80)",
-        foreground: "oklch(0.18 0.02 270)",
+        gold: "#C9A227",
+        navy: "#0B2E59",
+        teal: "#0E7490",
+        background: "oklch(var(--background) / <alpha-value>)",
+        foreground: "oklch(var(--foreground) / <alpha-value>)",
         card: {
-          DEFAULT: "oklch(1 0 0)",
-          foreground: "oklch(0.18 0.02 270)",
-        },
-        muted: {
-          DEFAULT: "oklch(0.96 0.015 195)",
-          foreground: "oklch(0.52 0.02 200)",
-        },
-        accent: {
-          DEFAULT: "oklch(0.78 0.15 75)",
-          foreground: "oklch(0.18 0.02 270)",
-        },
-        destructive: {
-          DEFAULT: "oklch(0.58 0.22 25)",
-          foreground: "oklch(1 0 0)",
-        },
-        secondary: {
-          DEFAULT: "oklch(0.96 0.015 195)",
-          foreground: "oklch(0.28 0.11 195)",
+          DEFAULT: "oklch(var(--card) / <alpha-value>)",
+          foreground: "oklch(var(--card-foreground) / <alpha-value>)",
         },
         popover: {
-          DEFAULT: "oklch(1 0 0)",
-          foreground: "oklch(0.18 0.02 270)",
+          DEFAULT: "oklch(var(--popover) / <alpha-value>)",
+          foreground: "oklch(var(--popover-foreground) / <alpha-value>)",
         },
+        primary: {
+          DEFAULT: "oklch(var(--primary) / <alpha-value>)",
+          foreground: "oklch(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "oklch(var(--secondary) / <alpha-value>)",
+          foreground: "oklch(var(--secondary-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "oklch(var(--muted) / <alpha-value>)",
+          foreground: "oklch(var(--muted-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "oklch(var(--accent) / <alpha-value>)",
+          foreground: "oklch(var(--accent-foreground) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "oklch(var(--destructive) / <alpha-value>)",
+          foreground: "oklch(var(--destructive-foreground) / <alpha-value>)",
+        },
+        border: "oklch(var(--border) / <alpha-value>)",
+        input: "oklch(var(--input) / <alpha-value>)",
+        ring: "oklch(var(--ring) / <alpha-value>)",
+        chart: {
+          1: "oklch(var(--chart-1) / <alpha-value>)",
+          2: "oklch(var(--chart-2) / <alpha-value>)",
+          3: "oklch(var(--chart-3) / <alpha-value>)",
+          4: "oklch(var(--chart-4) / <alpha-value>)",
+          5: "oklch(var(--chart-5) / <alpha-value>)",
+        },
+      },
+      fontFamily: {
+        serif: ["Playfair Display", "Georgia", "serif"],
+        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        xl: "1rem",
-        "2xl": "1.25rem",
-        "3xl": "1.5rem",
       },
       boxShadow: {
-        card: "0 2px 16px 0 rgba(5, 80, 80, 0.08)",
-        "card-hover": "0 8px 32px 0 rgba(5, 80, 80, 0.18)",
-        header: "0 2px 12px 0 rgba(5, 80, 80, 0.12)",
+        card: "0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05)",
+        "card-hover": "0 8px 30px rgba(11,46,89,0.15)",
+        header: "0 2px 20px rgba(11,46,89,0.1)",
       },
       keyframes: {
         "accordion-down": {
@@ -77,15 +81,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-in": {
-          from: { opacity: "0", transform: "translateY(20px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out forwards",
       },
     },
   },

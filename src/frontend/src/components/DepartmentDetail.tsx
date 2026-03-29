@@ -323,7 +323,7 @@ export function DepartmentDetail({ name, onBack }: DepartmentDetailProps) {
         className="relative overflow-hidden py-16 md:py-24"
         style={{
           background:
-            "linear-gradient(135deg, #0A4D8C 0%, #1a6bb5 50%, #4DA8DA 100%)",
+            "linear-gradient(135deg, #0E7490 0%, #0c6b82 50%, #0E7490 100%)",
         }}
       >
         {/* Background pattern */}
@@ -532,7 +532,7 @@ export function DepartmentDetail({ name, onBack }: DepartmentDetailProps) {
                 <div
                   className="w-16 h-16 rounded-2xl mx-auto mb-5 flex items-center justify-center text-white"
                   style={{
-                    background: "linear-gradient(135deg, #0A4D8C, #4DA8DA)",
+                    background: "linear-gradient(135deg, #0E7490, #0A5F72)",
                   }}
                 >
                   {item.icon}
@@ -553,7 +553,7 @@ export function DepartmentDetail({ name, onBack }: DepartmentDetailProps) {
       <section
         className="py-16"
         style={{
-          background: "linear-gradient(135deg, #0A4D8C 0%, #4DA8DA 100%)",
+          background: "linear-gradient(135deg, #0E7490 0%, #0A5F72 100%)",
         }}
         data-ocid="dept_detail.cta.section"
       >

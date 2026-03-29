@@ -12,6 +12,7 @@ import { Stats } from "@/components/Stats";
 import { Testimonials } from "@/components/Testimonials";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 import { useEffect, useState } from "react";
 
 export default function App() {
@@ -32,26 +33,28 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-sans">
-      <Header />
-      {selectedDept ? (
-        <DepartmentDetail name={selectedDept} onBack={handleBack} />
-      ) : (
-        <main>
-          <Hero />
-          <QuickActions />
-          <About />
-          <Departments onSelectDept={setSelectedDept} />
-          <Stats />
-          <WhyChooseUs />
-          <Doctors />
-          <Testimonials />
-          <AppointmentSection />
-          <Contact />
-        </main>
-      )}
-      <Footer />
-      <Toaster position="top-right" richColors />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen font-sans">
+        <Header />
+        {selectedDept ? (
+          <DepartmentDetail name={selectedDept} onBack={handleBack} />
+        ) : (
+          <main>
+            <Hero />
+            <QuickActions />
+            <About />
+            <Departments onSelectDept={setSelectedDept} />
+            <Stats />
+            <WhyChooseUs />
+            <Doctors />
+            <Testimonials />
+            <AppointmentSection />
+            <Contact />
+          </main>
+        )}
+        <Footer />
+        <Toaster position="top-right" richColors />
+      </div>
+    </LanguageProvider>
   );
 }

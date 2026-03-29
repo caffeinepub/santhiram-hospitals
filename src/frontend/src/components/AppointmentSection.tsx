@@ -128,7 +128,7 @@ export function AppointmentSection() {
   return (
     <section
       id="appointment"
-      className="py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50"
+      className="py-20 bg-hospital-bg"
       data-ocid="appointment.section"
     >
       <div className="max-w-7xl mx-auto px-4">
@@ -138,10 +138,10 @@ export function AppointmentSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+          <span className="text-gold font-semibold text-sm tracking-widest uppercase">
             Schedule a Visit
           </span>
-          <h2 className="font-serif text-4xl font-bold text-hospital-heading mt-2 mb-4">
+          <h2 className="font-serif text-4xl font-bold text-navy mt-2 mb-4">
             Book Your Appointment
           </h2>
           <p className="text-hospital-muted max-w-2xl mx-auto">
@@ -158,14 +158,20 @@ export function AppointmentSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-white">
+            <div
+              className="rounded-2xl p-8 text-white"
+              style={{ background: "#0B2E59" }}
+            >
               <h3 className="font-serif font-bold text-2xl mb-6">
                 Why Book With Us?
               </h3>
               <div className="space-y-5">
                 {features.map((f) => (
                   <div key={f.text} className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(201,162,39,0.25)" }}
+                    >
                       {f.icon}
                     </div>
                     <span className="text-white/90 text-sm">{f.text}</span>
@@ -199,24 +205,24 @@ export function AppointmentSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="bg-hospital-bg rounded-2xl p-8 shadow-card"
+              className="rounded-2xl p-8 shadow-lg bg-white border border-hospital-border"
               data-ocid="appointment.form"
             >
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Full Name *
                   </Label>
                   <Input
                     placeholder="Enter your full name"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="bg-white"
+                    className="border-hospital-border focus:border-teal"
                     data-ocid="appointment.name.input"
                   />
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Phone Number *
                   </Label>
                   <Input
@@ -225,12 +231,12 @@ export function AppointmentSection() {
                     onChange={(e) =>
                       setForm({ ...form, phone: e.target.value })
                     }
-                    className="bg-white"
+                    className="border-hospital-border focus:border-teal"
                     data-ocid="appointment.phone.input"
                   />
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Email Address
                   </Label>
                   <Input
@@ -240,12 +246,12 @@ export function AppointmentSection() {
                     onChange={(e) =>
                       setForm({ ...form, email: e.target.value })
                     }
-                    className="bg-white"
+                    className="border-hospital-border focus:border-teal"
                     data-ocid="appointment.email.input"
                   />
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Department *
                   </Label>
                   <Select
@@ -253,7 +259,7 @@ export function AppointmentSection() {
                     onValueChange={(v) => setForm({ ...form, department: v })}
                   >
                     <SelectTrigger
-                      className="bg-white"
+                      className="border-hospital-border"
                       data-ocid="appointment.department.select"
                     >
                       <SelectValue placeholder="Select department" />
@@ -268,19 +274,19 @@ export function AppointmentSection() {
                   </Select>
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Preferred Date
                   </Label>
                   <Input
                     type="date"
                     value={form.date}
                     onChange={(e) => setForm({ ...form, date: e.target.value })}
-                    className="bg-white"
+                    className="border-hospital-border focus:border-teal"
                     data-ocid="appointment.date.input"
                   />
                 </div>
                 <div>
-                  <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                  <Label className="text-sm font-medium text-navy mb-1.5 block">
                     Preferred Time
                   </Label>
                   <Select
@@ -288,7 +294,7 @@ export function AppointmentSection() {
                     onValueChange={(v) => setForm({ ...form, time: v })}
                   >
                     <SelectTrigger
-                      className="bg-white"
+                      className="border-hospital-border"
                       data-ocid="appointment.time.select"
                     >
                       <SelectValue placeholder="Select time" />
@@ -304,7 +310,7 @@ export function AppointmentSection() {
                 </div>
               </div>
               <div className="mt-5">
-                <Label className="text-sm font-medium text-hospital-heading mb-1.5 block">
+                <Label className="text-sm font-medium text-navy mb-1.5 block">
                   Message / Symptoms
                 </Label>
                 <Textarea
@@ -313,14 +319,15 @@ export function AppointmentSection() {
                   onChange={(e) =>
                     setForm({ ...form, message: e.target.value })
                   }
-                  className="bg-white min-h-[100px]"
+                  className="min-h-[100px] border-hospital-border focus:border-teal"
                   data-ocid="appointment.message.textarea"
                 />
               </div>
               <Button
                 type="submit"
                 disabled={mutation.isPending}
-                className="w-full mt-6 bg-primary hover:bg-primary-dark text-white font-bold rounded-full h-12 text-base"
+                className="w-full mt-6 text-white font-bold rounded-full h-12 text-base hover:opacity-90"
+                style={{ background: "#0B2E59" }}
                 data-ocid="appointment.submit_button"
               >
                 {mutation.isPending ? (
@@ -339,7 +346,7 @@ export function AppointmentSection() {
               </Button>
               {mutation.isSuccess && (
                 <p
-                  className="text-center text-sm text-primary mt-3"
+                  className="text-center text-sm text-teal mt-3"
                   data-ocid="appointment.success_state"
                 >
                   ✓ We'll call you within 30 minutes to confirm your

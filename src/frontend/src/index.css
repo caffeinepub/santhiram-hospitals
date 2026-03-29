@@ -20,36 +20,35 @@
 
 @layer base {
   :root {
-    /* Primary: Rich deep teal */
-    --primary: 0.38 0.13 195;
-    /* Primary Dark */
-    --primary-dark: 0.28 0.11 195;
-    /* Primary Light: Warm amber/gold */
-    --primary-light: 0.78 0.15 75;
+    /* Primary: Navy Blue #0B2E59 */
+    --primary: 0.22 0.085 255;
+    /* Primary Dark: Deeper Navy */
+    --primary-dark: 0.16 0.07 255;
+    /* Accent: Gold #C9A227 */
+    --accent: 0.73 0.14 78;
+    --accent-foreground: 0.22 0.085 255;
     /* Emergency: Vivid coral-red */
     --destructive: 0.58 0.22 25;
-    /* Background: Soft warm off-white */
-    --background: 0.98 0.005 80;
+    /* Background: Pure white */
+    --background: 1 0 0;
     /* Card: Pure white */
     --card: 1 0 0;
-    /* Foreground: Rich near-black with warmth */
-    --foreground: 0.18 0.02 270;
-    /* Muted text: Medium warm gray */
-    --muted-foreground: 0.52 0.02 200;
-    /* Border: Soft cool gray */
-    --border: 0.91 0.008 200;
-    --input: 0.91 0.008 200;
-    --ring: 0.38 0.13 195;
+    /* Foreground: Navy blue #0B2E59 */
+    --foreground: 0.22 0.085 255;
+    /* Muted text: Slate #334155 */
+    --muted-foreground: 0.45 0.05 255;
+    /* Border: Soft gray */
+    --border: 0.91 0.008 255;
+    --input: 0.91 0.008 255;
+    --ring: 0.22 0.085 255;
     --radius: 0.75rem;
-    /* Muted: Very light teal tint */
-    --muted: 0.96 0.015 195;
-    --accent: 0.78 0.15 75;
-    --accent-foreground: 0.18 0.02 270;
+    /* Muted: Very light tint */
+    --muted: 0.97 0.005 255;
     --popover: 1 0 0;
-    --popover-foreground: 0.18 0.02 270;
-    --secondary: 0.96 0.015 195;
-    --secondary-foreground: 0.28 0.11 195;
-    --card-foreground: 0.18 0.02 270;
+    --popover-foreground: 0.22 0.085 255;
+    --secondary: 0.97 0.005 255;
+    --secondary-foreground: 0.22 0.085 255;
+    --card-foreground: 0.22 0.085 255;
     --primary-foreground: 1 0 0;
     --destructive-foreground: 1 0 0;
   }
@@ -92,7 +91,94 @@
   .border-primary {
     border-color: oklch(var(--primary));
   }
+  .shadow-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  .shadow-card-hover {
+    box-shadow: 0 8px 30px rgba(11, 46, 89, 0.15);
+  }
+  .shadow-header {
+    box-shadow: 0 2px 20px rgba(11, 46, 89, 0.1);
+  }
 }
+
+/* ====================== */
+/* Hero Background        */
+/* ====================== */
+
+.hero-gradient {
+  background: #0b2e59;
+}
+
+/* Dot grid overlay */
+.hero-dot-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.7) 1px,
+    transparent 0
+  );
+  background-size: 36px 36px;
+}
+
+/* Pulse rings */
+.hero-pulse-ring {
+  position: absolute;
+  border: 1.5px solid rgba(201, 162, 39, 0.25);
+  border-radius: 50%;
+  animation: pulse-ring 3s ease-out infinite;
+}
+
+.hero-pulse-ring:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+}
+
+/* Video frame gold border */
+.hero-video-frame {
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  box-shadow: 0 0 0 1px rgba(201, 162, 39, 0.1), 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ====================== */
+/* Department Scroll Strip */
+/* ====================== */
+
+@keyframes dept-strip-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.dept-strip-animate {
+  animation: dept-strip-scroll 50s linear infinite;
+  display: flex;
+  white-space: nowrap;
+}
+
+.dept-strip-animate:hover {
+  animation-play-state: paused;
+}
+
+/* ====================== */
+/* News Ticker            */
+/* ====================== */
 
 @keyframes ticker-scroll {
   0% {

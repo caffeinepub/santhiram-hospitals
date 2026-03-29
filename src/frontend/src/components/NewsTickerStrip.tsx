@@ -17,13 +17,13 @@ export function NewsTickerStrip() {
   return (
     <div
       className="relative overflow-hidden py-1.5"
-      style={{ background: "linear-gradient(90deg, #0A4D8C 0%, #4DA8DA 100%)" }}
+      style={{ background: "#0B2E59" }}
       data-ocid="news_ticker.panel"
     >
       <div className="flex items-center">
         {/* Label */}
-        <div className="flex-shrink-0 flex items-center gap-1.5 bg-white/20 px-3 py-0.5 z-10 mr-3">
-          <Rss className="w-3 h-3 text-white" />
+        <div className="flex-shrink-0 flex items-center gap-1.5 bg-white/10 px-3 py-0.5 z-10 mr-3">
+          <Rss className="w-3 h-3 text-gold" />
           <span className="text-white text-xs font-bold tracking-widest uppercase">
             Health News
           </span>
@@ -35,9 +35,9 @@ export function NewsTickerStrip() {
             {doubled.map((item, idx) => (
               <span
                 key={`ticker-${idx}-${item.slice(0, 10)}`}
-                className="text-white text-xs font-medium px-6 flex-shrink-0"
+                className="text-white/90 text-xs font-medium px-6 flex-shrink-0"
               >
-                <span className="text-white/60 mr-2">●</span>
+                <span className="text-gold mr-2">●</span>
                 {item}
               </span>
             ))}
