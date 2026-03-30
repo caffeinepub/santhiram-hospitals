@@ -240,11 +240,9 @@ export function Header() {
               style={{
                 background: "linear-gradient(135deg, #C9A227, #a07d1a)",
               }}
-              onClick={() =>
-                document
-                  .getElementById("appointment")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={() => {
+                window.location.href = "tel:+919121022077";
+              }}
               data-ocid="header.book_appointment.button"
             >
               {t("bookAppointment")}
@@ -317,7 +315,9 @@ export function Header() {
                   style={{
                     background: "linear-gradient(135deg, #C9A227, #a07d1a)",
                   }}
-                  onClick={() => handleMobileNav("#appointment")}
+                  onClick={() => {
+                    window.location.href = "tel:+919121022077";
+                  }}
                   data-ocid="header.mobile_book.button"
                 >
                   {t("bookAppointment")}

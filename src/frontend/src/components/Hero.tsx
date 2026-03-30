@@ -134,7 +134,7 @@ export function Hero() {
       </div>
 
       {/* Decorative rings — bottom right */}
-      <div className="absolute bottom-44 right-8 pointer-events-none select-none hidden lg:block">
+      <div className="absolute bottom-56 right-8 pointer-events-none select-none hidden lg:block">
         <div className="hero-pulse-ring" style={{ width: 120, height: 120 }} />
         <div
           className="hero-pulse-ring"
@@ -158,10 +158,10 @@ export function Hero() {
       </div>
 
       {/* Department scroll strip — absolutely positioned at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-44 z-[1] pointer-events-none overflow-hidden">
+      <div className="absolute bottom-8 left-0 right-0 h-56 z-[1] pointer-events-none overflow-hidden">
         {/* Top gradient fade — blends strip into navy above */}
         <div
-          className="absolute top-0 left-0 right-0 h-16 z-10"
+          className="absolute top-0 left-0 right-0 h-20 z-10"
           style={{
             background:
               "linear-gradient(to bottom, #0B2E59 0%, transparent 100%)",
@@ -195,7 +195,7 @@ export function Hero() {
                 data-ocid="hero.specialties.link"
               >
                 <div
-                  className="w-20 h-20 rounded-full overflow-hidden flex items-center justify-center"
+                  className="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center"
                   style={{
                     background: "rgba(255,255,255,0.08)",
                     border: "2px solid rgba(255,255,255,0.2)",
@@ -218,7 +218,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-4 pt-36 pb-52">
+      <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto w-full px-4 pt-36 pb-72">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end">
           {/* Left Column */}
           <div>
@@ -259,22 +259,22 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Heading — single line */}
+            {/* Heading — wrapping allowed */}
             <motion.h1
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-serif text-2xl sm:text-3xl xl:text-[2.6rem] font-bold text-white leading-tight mb-4 whitespace-nowrap"
+              className="font-serif text-2xl sm:text-3xl xl:text-[2.6rem] font-bold text-white leading-tight mb-4"
             >
               {t("heroHeading")}
             </motion.h1>
 
-            {/* Subtext — single line */}
+            {/* Subtext */}
             <motion.p
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/75 text-sm sm:text-base leading-relaxed mb-6 whitespace-nowrap overflow-hidden text-ellipsis"
+              className="text-white/75 text-sm sm:text-base leading-relaxed mb-6"
             >
               {t("heroSubtext")}
             </motion.p>

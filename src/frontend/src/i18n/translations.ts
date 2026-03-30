@@ -9,14 +9,15 @@ export const translations: Record<LangCode, Record<string, string>> = {
     doctors: "Doctors",
     departments: "Departments",
     contact: "Contact",
-    bookAppointment: "Book Appointment",
+    bookAppointment: "Call Now",
     emergency: "Emergency",
     // Hero badges
     badge1: "Nandyal's Premier Super Speciality Hospital",
     badge2: "NABH Accredited",
     badge3: "24/7 Emergency",
     // Hero heading/subtext
-    heroHeading: "24/7 Emergency & Intensive Care",
+    heroHeading:
+      "24/7 Emergency Intensive Care Multi Speciality Hospital in Nandyal A.P",
     heroSubtext:
       "Advanced life support and critical care when every second counts. Located in Nandyal with 24-hour specialist availability.",
     // Form
@@ -57,14 +58,15 @@ export const translations: Record<LangCode, Record<string, string>> = {
     doctors: "వైద్యులు",
     departments: "విభాగాలు",
     contact: "సంప్రదించండి",
-    bookAppointment: "అపాయింట్‌మెంట్ బుక్ చేయండి",
+    bookAppointment: "ఇప్పుడు కాల్ చేయండి",
     emergency: "అత్యవసర సేవ",
     // Hero badges
     badge1: "నంద్యాల యొక్క ప్రీమియర్ సూపర్ స్పెషాలిటీ హాస్పిటల్",
     badge2: "NABH గుర్తింపు పొందినది",
     badge3: "24/7 అత్యవసర సేవ",
     // Hero heading/subtext
-    heroHeading: "24/7 అత్యవసర మరియు ఇంటెన్సివ్ కేర్",
+    heroHeading:
+      "24/7 Emergency Intensive Care Multi Speciality Hospital in Nandyal A.P",
     heroSubtext:
       "ప్రతి సెకను విలువైనది — అత్యాధునిక జీవన మద్దతు మరియు క్రిటికల్ కేర్. నంద్యాలలో 24 గంటల నిపుణుల సేవ అందుబాటులో ఉంది.",
     // Form
@@ -101,14 +103,15 @@ export const translations: Record<LangCode, Record<string, string>> = {
     doctors: "डॉक्टर",
     departments: "विभाग",
     contact: "संपर्क",
-    bookAppointment: "अपॉइंटमेंट बुक करें",
+    bookAppointment: "अभी कॉल करें",
     emergency: "आपातकालीन सेवा",
     // Hero badges
     badge1: "नंद्याल का प्रमुख सुपर स्पेशियलिटी अस्पताल",
     badge2: "NABH मान्यता प्राप्त",
     badge3: "24/7 आपातकालीन सेवा",
     // Hero heading/subtext
-    heroHeading: "24/7 आपातकालीन और गहन चिकित्सा",
+    heroHeading:
+      "24/7 Emergency Intensive Care Multi Speciality Hospital in Nandyal A.P",
     heroSubtext:
       "हर पल कीमती है — उन्नत जीवन रक्षक और गंभीर देखभाल सेवाएँ। नंद्याल में 24 घंटे विशेषज्ञ उपलब्ध हैं।",
     // Form
@@ -145,14 +148,15 @@ export const translations: Record<LangCode, Record<string, string>> = {
     doctors: "மருத்துவர்கள்",
     departments: "துறைகள்",
     contact: "தொடர்பு",
-    bookAppointment: "சந்திப்பு பதிவு செய்யுங்கள்",
+    bookAppointment: "இப்போது அழைக்கவும்",
     emergency: "அவசர சேவை",
     // Hero badges
     badge1: "நந்தியாலின் முன்னணி சூப்பர் ஸ்பெஷாலிட்டி மருத்துவமனை",
     badge2: "NABH அங்கீகாரம் பெற்றது",
     badge3: "24/7 அவசர சேவை",
     // Hero heading/subtext
-    heroHeading: "24/7 அவசர மற்றும் தீவிர சிகிச்சை",
+    heroHeading:
+      "24/7 Emergency Intensive Care Multi Speciality Hospital in Nandyal A.P",
     heroSubtext:
       "ஒவ்வொரு நொடியும் முக்கியம் — மேம்பட்ட உயிர் காக்கும் சேவை. நந்தியாலில் 24 மணி நேர நிபுணர் சேவை கிடைக்கிறது.",
     // Form
@@ -192,14 +196,15 @@ export const translations: Record<LangCode, Record<string, string>> = {
     doctors: "ഡോക്ടർമാർ",
     departments: "വിഭാഗങ്ങൾ",
     contact: "ബന്ധപ്പെടുക",
-    bookAppointment: "അപ്പോയ്‌ന്റ്‌മെന്റ് ബുക്ക് ചെയ്യൂ",
+    bookAppointment: "ഇപ്പോൾ വിളിക്കൂ",
     emergency: "അടിയന്തര സേവനം",
     // Hero badges
     badge1: "നന്ദ്യാലിലെ പ്രമുഖ സൂപ്പർ സ്പെഷ്യാലിറ്റി ഹോസ്പിറ്റൽ",
     badge2: "NABH അംഗീകൃതം",
     badge3: "24/7 അടിയന്തര സേവനം",
     // Hero heading/subtext
-    heroHeading: "24/7 അടിയന്തര & ഇൻറ്റൻസീവ് കെയർ",
+    heroHeading:
+      "24/7 Emergency Intensive Care Multi Speciality Hospital in Nandyal A.P",
     heroSubtext:
       "ഓരോ നിമിഷവും വിലപ്പെട്ടതാണ് — അത്യാധുനിക ജീവൻ രക്ഷാ ചികിൽസ. നന്ദ്യാലിൽ 24 മണിക്കൂർ വിദഗ്ധ സേവനം ലഭ്യം.",
     // Form
